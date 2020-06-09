@@ -1,0 +1,36 @@
+http://127.0.0.1:8069
+python ./odoo-bin -c odoo.conf
+
+"C:\Program Files\Odoo 13.0\python\python.exe" "C:\Program Files\Odoo 13.0\server\odoo-bin" -c "C:\Program Files\Odoo 13.0\server\odoo.conf" 
+
+"C:\Program Files\Odoo 13.0\python\python.exe" "C:\Program Files\Odoo 13.0\server\odoo-bin" scaffold Souhail_ERP "C:\Program Files\Odoo 13.0\server\odoo\addons\Souhail_ERP" 
+
+'summary': """
+        En partant du CPS de l’appel d’offre pour l’ERP de l’Agence Urbaine de Casablanca (AUC), on devrait dérouler 
+        toute la démarche projet pour couvrir le domaine d’activité « Gestion des bons de commande » au niveau de l’AUC""",
+
+    'description': """
+        En partant du CPS de l’appel d’offre pour l’ERP de l’Agence Urbaine de Casablanca (AUC), on devrait dérouler toute la démarche projet pour couvrir le domaine d’activité « Gestion des bons de commande » au niveau de l’AUC 
+    """,
+
+    'author': "Souhail_Amghar",
+    'company': 'Agence Urbaine de Casablanca (AUC)',
+    'website': "https://www.google.com/maps/place/Casablanca+Urban+Agency/@33.5916208,-7.6223512,15z/data=!4m2!3m1!1s0x0:0x893d7614e3a489ae?sa=X&ved=2ahUKEwiH55mgxurpAhUHxoUKHT6UAfEQ_BIwCnoECBEQCA",
+
+
+    
+    @api.depends('unit_price', 'quantity')
+    def _compute_total_amount(self):
+      for record in self:
+        record.total_amount = record.revised_unit_price * record.quantity
+
+
+    #@api.depends('unit_price', 'quantity')
+    #def _compute_total_amount(self):
+    #    self.total_amount = self.revised_unit_price * self.quantity
+
+   #@api.depends('unit_price')
+    #def _compute_revised_unit_price(self):
+    #    if self.revised_unit_price in [0, 0.0, False]:
+    #        self.revised_unit_price = self.unit_price
+    #    return
